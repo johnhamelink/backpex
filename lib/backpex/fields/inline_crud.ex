@@ -197,7 +197,7 @@ defmodule Backpex.Fields.InlineCRUD do
           <.inputs_for :let={f_nested} field={@form[@name]}>
             <input type="hidden" name={"change[#{@name}_order][]"} value={f_nested.index} tabindex="-1" aria-hidden="true" />
 
-            <div class="mb-3 flex items-start gap-x-4">
+            <div class={if @field_options.type == :embed_one, do: "mb-3 gap-x-4", else: "mb-3 flex items-start gap-x-4"}>
               <div
                 :for={{child_field_name, child_field_options} <- @child_fields}
                 class={child_field_class(child_field_options, assigns)}
